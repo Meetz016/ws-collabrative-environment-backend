@@ -44,7 +44,7 @@ export class CollaborativeDocument {
 
 			// Broadcast the message to all connected clients
 			for (const [ws, id] of this.clients) {
-				if (ws.readyState === WebSocket.OPEN) {
+				if (ws != server && ws.readyState === WebSocket.OPEN) {
 					ws.send(message);
 				}
 			}
